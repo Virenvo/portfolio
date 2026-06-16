@@ -1,0 +1,286 @@
+:root{
+  --bg:#0a0f1c;
+  --card:#111a2e;
+  --accent:#7c3aed;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* canvas */
+#bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* nav */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 22px;
+  background:rgba(10,15,28,0.65);
+  backdrop-filter:blur(10px);
+  z-index:100;
+}
+
+.logo{
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.links a{
+  margin-left:14px;
+  color:var(--text);
+  text-decoration:none;
+  font-size:13px;
+  opacity:0.8;
+  transition:opacity 0.2s;
+}
+
+.links a:hover{
+  opacity:1;
+}
+
+/* hero */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 20px;
+}
+
+.hero-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.hero h1{
+  font-size:clamp(2.8rem, 5vw, 4.8rem);
+  font-weight:900;
+  line-height:1.05;
+}
+
+.hero span{
+  color:var(--accent);
+}
+
+/* typing */
+.typing{
+  font-size:clamp(1.2rem, 2.2vw, 2rem);
+  color:var(--muted);
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  height:2.6rem;
+  font-weight:400;
+}
+
+.typing-text{
+  display:inline;
+}
+
+.cursor{
+  display:inline-block;
+  color:var(--accent);
+  font-weight:300;
+  animation:blink 1s step-end infinite;
+  line-height:1;
+  flex-shrink:0;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0;}
+}
+
+.subtitle{
+  margin-top:12px;
+  font-size:1.15rem;
+  color:var(--muted);
+}
+
+/* btn */
+.btn{
+  display:inline-block;
+  margin-top:26px;
+  padding:14px 28px;
+  background:var(--accent);
+  color:white;
+  border-radius:12px;
+  font-weight:800;
+  text-decoration:none;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow:0 0 0 rgba(124,58,237,0);
+}
+
+.btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 8px 28px rgba(124,58,237,0.45);
+}
+
+.btn:active{
+  transform:translateY(0) scale(0.98);
+  box-shadow:0 2px 8px rgba(124,58,237,0.3);
+}
+
+/* sections */
+.section{
+  padding:80px 20px;
+  max-width:1050px;
+  margin:auto;
+}
+
+.section h2{
+  margin-bottom:20px;
+}
+
+.section p{
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:14px;
+}
+
+.section p:last-child{
+  margin-bottom:0;
+}
+
+/* grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:12px;
+}
+
+/* card */
+.card{
+  background:var(--card);
+  padding:26px;
+  border-radius:16px;
+  border:1px solid transparent;
+  transition:border 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover{
+  border:1px solid var(--accent);
+  transform:translateY(-6px);
+  box-shadow:0 12px 32px rgba(124,58,237,0.15);
+}
+
+/* wip */
+.wip{
+  display:inline-block;
+  margin-top:12px;
+  font-weight:800;
+  font-size:0.75rem;
+  letter-spacing:1px;
+  color:#ff4d4d;
+  border:1px solid rgba(255,77,77,0.3);
+  border-radius:6px;
+  padding:3px 8px;
+}
+
+/* timeline */
+.timeline{
+  border-left:2px solid var(--accent);
+  padding-left:24px;
+}
+
+.item{
+  margin-bottom:24px;
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+}
+
+.item:last-child{
+  margin-bottom:0;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--accent);
+  flex-shrink:0;
+  margin-top:4px;
+  margin-left:-30px;
+  box-shadow:0 0 0 3px rgba(124,58,237,0.2);
+}
+
+/* contact */
+.contact{
+  text-align:center;
+}
+
+/* footer */
+footer{
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+}
+
+/* animations */
+.section, .card{
+  opacity:0;
+  transform:translate3d(0,20px,0);
+  transition:opacity 0.55s ease, transform 0.55s ease;
+  will-change:opacity, transform;
+}
+
+.section.show, .card.show{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .section, .card{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+  .cursor{
+    animation:none;
+  }
+}
+
+.section p {
+  margin-bottom: 14px;
+}
+
+.contact p {
+  margin-bottom: 0;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-link:hover h3 {
+  color: var(--accent);
+}
